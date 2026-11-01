@@ -1,0 +1,6 @@
+# 编译产物
+*.exe
+*.dll
+*.zip
+# 本地配置
+plan.json

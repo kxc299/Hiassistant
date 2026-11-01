@@ -181,7 +181,7 @@
 - GUI 版：`GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-H windowsgui -s -w" -o 海信一体机助手.exe .`
 - 调试版：`GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w" -o 海信一体机助手-调试版.exe .`
 
-## 反编译/配置核对结论（来自 HiRemote21 与 cmds.xml）
+## 反编译/配置核对结论（来自 HiRemote 与 cmds.xml）
 
 - 集控 `HiRemote.exe` 为 .NET 4.5 程序，串口/定时逻辑位于 `CCComService`（`com_DataReceived`、`ComSend`）、`CommandExecuteJob`/`AddCmdScheduleJob`（Quartz 定时）、`poweroffHanler`（`EWX_POWEROFF`/`EWX_SHUTDOWN` 关机、`powerofftimer` 倒计时）；命令参数表在 `cmds.xml`。
 - `cmds.xml` 中的息屏/亮屏是**旧式** `C1 19` 帧；运行时实际下发的是 `C1 FF 00 12`（Communication 硬编码），本程序沿用运行时帧，同时补充了 cmds.xml 里的信源、图像模式、校时、每日定时等命令。
